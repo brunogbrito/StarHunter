@@ -1,0 +1,104 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Assets/Buildings/pallet town/mat.png" type="Texture" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://OakLabMachine.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Buildings/pallet town/oaks_lab_interior.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 112 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 104, 16 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 24, 12 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 8, 18 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 48, 8 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 48, 8 )
+
+[node name="DrOaksLab" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -384.0
+margin_top = -256.0
+margin_right = 384.0
+margin_bottom = 256.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -112.0
+margin_top = -48.0
+margin_right = 80.0
+margin_bottom = 96.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = -24.0
+margin_top = 144.0
+margin_right = 16.0
+margin_bottom = 184.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -120, 64 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 104, 64 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -8, -32 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 40, 28 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -104, 14 )
+shape = SubResource( 7 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -64, 168 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 48, 168 )
+shape = SubResource( 4 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( -16, 144 )
+
+[node name="OakLabMachine" parent="YSort" instance=ExtResource( 4 )]
+
+[node name="Door" parent="." instance=ExtResource( 3 )]
+modulate = Color( 0.521569, 1, 0, 1 )
+position = Vector2( -16, 160 )
+next_scene_path = "res://Town.tscn"
+should_play_animation = false
+spawn_location = Vector2( 176, 128 )
+spawn_direction = Vector2( 0, 1 )
